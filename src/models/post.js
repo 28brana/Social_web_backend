@@ -1,4 +1,4 @@
-const { model, Schema, Types } = require('mongoose');
+import { model, Schema, Types } from 'mongoose'
 
 const postSchema = new Schema(
     {
@@ -9,11 +9,11 @@ const postSchema = new Schema(
         content: [
             {
                 type: {
-                    type: string,
+                    type: String,
                     enum: ['video', 'image']
                 },
                 url: {
-                    type: string,
+                    type: String,
                 }
             }
         ],
@@ -24,7 +24,7 @@ const postSchema = new Schema(
             }
         ],
         description: {
-            type: string,
+            type: String,
         },
         comments: [
             {
@@ -44,4 +44,7 @@ const postSchema = new Schema(
     }
 );
 
-module.exports = model("Post", postSchema);
+export default model("Post", postSchema);
+
+
+

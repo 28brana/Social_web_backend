@@ -1,7 +1,9 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 dotenv.config();
-const url = 'mongodb+srv://28brana:%40Keerat28@cluster0.k23a3eh.mongodb.net/?retryWrites=true&w=majority';
+
+const url = process.env.MONGO_URL;
+
 mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -12,4 +14,4 @@ mongoose.connect(url, {
 })
 
 
-module.exports = mongoose;
+export default mongoose

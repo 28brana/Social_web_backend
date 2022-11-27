@@ -1,4 +1,4 @@
-const { model, Schema, Types } = require('mongoose');
+import { model, Schema, Types } from 'mongoose'
 
 const notificationsSchema = new Schema(
     {

@@ -1,4 +1,4 @@
-const { model, Schema, Types } = require('mongoose');
+import { model, Schema, Types } from 'mongoose'
 
 const userSchema = new Schema(
     {
@@ -12,20 +12,15 @@ const userSchema = new Schema(
             required: true,
             unique: true
         },
-        phone: {
-            type: String,
-            required: true,
-            unique: true
-        },
         password: {
             type: String,
             required: true
         },
         profile: {
-            type: string
+            type: String
         },
         bio: {
-            type: string
+            type: String
         },
         posts: [
             {
@@ -60,11 +55,15 @@ const userSchema = new Schema(
                 type: Types.ObjectId,
                 ref: 'User'
             }
-        ]
+        ],
+        isVerified: {
+            type: Boolean,
+            default: false,
+        }
     },
     {
         timestamps: true
     }
 );
 
-module.exports = model("User", userSchema);
+export default model("User", userSchema);
