@@ -36,6 +36,7 @@ const postSchema = new Schema(
             {
                 type: Types.ObjectId,
                 ref: 'User',
+                unique: true,
             }
         ]
     },

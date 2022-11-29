@@ -7,18 +7,18 @@ const commentSchema = new Schema(
             ref: 'User',
         },
         text: {
-            type: string,
+            type: String,
         },
-        reply: [
-            {
-                type: Types.ObjectId,
-                ref: 'Comment'
-            }
-        ]
+        // reply: [
+        //     {
+        //         type: Types.ObjectId,
+        //         ref: 'Comment'
+        //     }
+        // ]
     },
     {
         timestamps: true
     }
 );
 
-module.exports = model("Comment", commentSchema);
+export default model("Comment", commentSchema);
