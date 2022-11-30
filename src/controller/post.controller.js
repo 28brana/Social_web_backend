@@ -1,10 +1,16 @@
 import comment from '../models/comment.js';
+import notifications from '../models/notification.js';
 import post from '../models/post.js';
 import user from '../models/user.js';
 import catchAsync from '../utils/catchAsync.js';
 
 export const getPost = catchAsync(async (req, res) => {
-    const result = await post.find({});
+    const { query } = req;
+
+    const page = query.page || 1;
+    const limit = query.limit || 5;
+
+    const result = await post.find({}).skip((page - 1) * limit).limit(limit);
     return res.json(result);
 })
 
@@ -41,7 +47,19 @@ export const toggleLikePost = catchAsync(async (req, res) => {
 
     if (!postData.likes.includes(userId)) {
         await postData.updateOne({ $push: { likes: userId } })
+
+        // const newNotification= new notifications({
+        //     text: "",
+        //     picUrl: {
+        //         type: string
+        //     },
+        //     isSeen: {
+        //         type: boolean,
+        //         default: false,
+        //     }
+        // },)
         return res.status(201).json({ msg: "Post is liked" });
+
     }
 
     await postData.updateOne({ $pull: { likes: userId } });

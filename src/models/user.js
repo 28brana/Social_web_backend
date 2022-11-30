@@ -46,10 +46,12 @@ const userSchema = new Schema(
                 ref: 'User'
             }
         ],
-        notifications: {
-            type: Types.ObjectId,
-            ref: 'Notification'
-        },
+        notifications: [
+            {
+                type: Types.ObjectId,
+                ref: 'Notification'
+            }
+        ],
         blockedUser: [
             {
                 type: Types.ObjectId,

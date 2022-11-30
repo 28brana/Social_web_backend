@@ -1,4 +1,5 @@
 import { Router } from 'express';
+// import jwtAuth from '../middleware/jwtAuth.js';
 import authRouter from './auth.router.js';
 import postRouter from './post.router.js';
 import userRouter from './user.router.js';
